@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.aerotrack</groupId>
-  <artifactId>AerotrackModel</artifactId>
+  <artifactId>aerotrack-model</artifactId>
   <version>1.0.0</version>
 
   <properties>
@@ -14,6 +14,14 @@
     <lombok.version>1.18.20</lombok.version>
     <aws.sdk.version>2.17.100</aws.sdk.version> <!-- Adjust this to the version you are using -->
   </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub OWNER Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/trjohnny/AerotrackModel</url>
+    </repository>
+  </distributionManagement>
 
   <dependencies>
     <!-- Lombok for annotations -->
