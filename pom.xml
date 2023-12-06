@@ -6,7 +6,7 @@
 
   <groupId>com.aerotrack</groupId>
   <artifactId>aerotrack-model</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.0</version>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -19,7 +19,7 @@
     <repository>
       <id>github</id>
       <name>GitHub OWNER Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/trjohnny/Aerotrack</url>
+      <url>https://maven.pkg.github.com/trjohnny/AerotrackModel</url>
     </repository>
   </distributionManagement>
 
@@ -53,7 +53,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>3.8.1</version>
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
