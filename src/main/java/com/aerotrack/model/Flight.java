@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @DynamoDbBean
 @ToString
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -27,8 +26,8 @@ public class Flight {
     private String updatedDateTime;
     private double price;
 
-    public Flight(String direction, String departureDateTime, String arrivalDateTime, String flightNumber, double price) {
-        this.direction = direction;
+    public Flight(String airportFromCode, String airportToCode, String departureDateTime, String arrivalDateTime, String flightNumber, double price) {
+        this.direction = airportFromCode + "-" + airportToCode;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
         this.flightNumber = flightNumber;
