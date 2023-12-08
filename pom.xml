@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.aerotrack</groupId>
-  <artifactId>aerotrack-model</artifactId>
-  <version>1.0.6</version>
+  <artifactId>aerotrack-model</artifactId> 
+  <version>1.0.6</version> 
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
