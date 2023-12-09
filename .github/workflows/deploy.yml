@@ -28,7 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Display Maven settings.xml
-        run: cat ${{ github.workspace }}/.m2/settings.xml
+        run: cat ~/.m2/settings.xml
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
