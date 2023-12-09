@@ -2,6 +2,8 @@ name: Java CI
 
 on: [push]
 
+permissions: delete-all
+
 jobs:
   build:
 
@@ -15,9 +17,7 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
     - name: Deploy to Github Package Registry
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         mkdir -p ~/.m2
-        echo "<settings><servers><server><id>github</id><username>trjohnny</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
+        echo "<settings><servers><server><id>github</id><username>${{ github.actor }}</username><password>${{ secrets.GITHUB_TOKEN }}</password></server></servers></settings>" > ~/.m2/settings.xml
         mvn deploy
