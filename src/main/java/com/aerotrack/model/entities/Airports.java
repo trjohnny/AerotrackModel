@@ -1,4 +1,4 @@
-package com.aerotrack.model;
+package com.aerotrack.model.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

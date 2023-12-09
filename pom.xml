@@ -6,14 +6,7 @@
 
   <groupId>com.aerotrack</groupId>
   <artifactId>aerotrack-model</artifactId>
-  <version>1.0.6</version>
-
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <lombok.version>1.18.20</lombok.version>
-    <aws.sdk.version>2.17.100</aws.sdk.version> <!-- Adjust this to the version you are using -->
-  </properties>
+  <version>1.0.7</version>
 
   <distributionManagement>
     <repository>
@@ -53,10 +46,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.11.0</version>
         <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>

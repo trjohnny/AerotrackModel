@@ -1,0 +1,33 @@
+name: Deploy Maven Package
+
+on:
+  push:
+    branches: [ mainline ]
+
+permissions:
+  packages: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+      - name: Create Maven settings.xml
+        uses: s4u/maven-settings-action@v2.8.0
+        with:
+          servers: '[{"id": "github", "username": "trjohnny", "password": "${{env.GITHUB_TOKEN}}"}]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+      - name: Deploy with Maven
+        run: mvn -B deploy --file pom.xml
