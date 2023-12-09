@@ -1,4 +1,4 @@
-name: Java Continuous Integration
+name: Package build and Unit tests
 
 on:
   pull_request:
