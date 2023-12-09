@@ -13,5 +13,5 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class AirportsJsonFile {
-    private List<Airport> airportList;
+    private List<Airport> airports;
 }
