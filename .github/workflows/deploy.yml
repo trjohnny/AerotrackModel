@@ -2,7 +2,7 @@ name: Java CI
 
 on: [push]
 
-permissions: delete-all
+permissions: write-all
 
 jobs:
   build:
