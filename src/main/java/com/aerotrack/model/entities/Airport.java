@@ -16,4 +16,5 @@ public class Airport {
     private String name;
     private String countryCode;
     private List<String> connections;
+    private String lastUpdatedDateTime;
 }
