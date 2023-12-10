@@ -43,9 +43,7 @@ public class Flight {
 
     @DynamoDbSortKey
     public String getDepartureDateTime() { return departureDateTime; }
-    public void setDepartureDateTime(String departureDateTime) { this.departureDateTime = departureDateTime; }
 
     @DynamoDbPartitionKey
     public String getDirection() { return direction; }
-    public void setDirection(String direction) { this.direction = direction; }
 }
