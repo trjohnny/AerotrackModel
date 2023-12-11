@@ -3,6 +3,7 @@ package com.aerotrack.model.protocol;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,12 +13,19 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class ScanQueryRequest {
+    @NonNull
     private Integer minDays;
+    @NonNull
     private Integer maxDays;
+    @NonNull
     private String availabilityStart;
+    @NonNull
     private String availabilityEnd;
+    @NonNull
     private List<String> departureAirports;
+    @NonNull
     private List<String> destinationAirports;
+    @NonNull
     private Boolean returnToSameAirport;
 
     public ScanQueryRequest(Integer minDays, Integer maxDays, String availabilityStart, String availabilityEnd,
