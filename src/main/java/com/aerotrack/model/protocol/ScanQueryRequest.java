@@ -52,7 +52,7 @@ public class ScanQueryRequest {
         if (maxDays >= 90) throw new IllegalArgumentException("maxDays must be less than 90");
         if (start.isBefore(today)) throw new IllegalArgumentException("availabilityStart must be a future date");
         if (start.isAfter(end)) throw new IllegalArgumentException("availabilityStart must be before availabilityEnd");
-        if (maxDays - minDays < end.toEpochDay() - start.toEpochDay()) throw new IllegalArgumentException("maxDays - minDays must be greater than or equal to availabilityEnd - availabilityStart");
+        if (maxDays > end.toEpochDay() - start.toEpochDay()) throw new IllegalArgumentException("maxDays - minDays must be greater than or equal to availabilityEnd - availabilityStart");
         if (end.isAfter(oneYearFromNow)) throw new IllegalArgumentException("availabilityEnd must be within one year from today");
     }
 }
