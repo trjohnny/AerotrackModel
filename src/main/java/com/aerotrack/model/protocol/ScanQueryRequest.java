@@ -1,6 +1,5 @@
 package com.aerotrack.model.protocol;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Builder
-@AllArgsConstructor
 public class ScanQueryRequest {
     private Integer minDays;
     private Integer maxDays;
@@ -21,6 +19,19 @@ public class ScanQueryRequest {
     private List<String> departureAirports;
     private List<String> destinationAirports;
     private Boolean returnToSameAirport;
+
+    public ScanQueryRequest(Integer minDays, Integer maxDays, String availabilityStart, String availabilityEnd,
+                            List<String> departureAirports, List<String> destinationAirports, Boolean returnToSameAirport) {
+        this.minDays = minDays;
+        this.maxDays = maxDays;
+        this.availabilityStart = availabilityStart;
+        this.availabilityEnd = availabilityEnd;
+        this.departureAirports = departureAirports;
+        this.destinationAirports = destinationAirports;
+        this.returnToSameAirport = returnToSameAirport;
+
+        validate();
+    }
 
     public void validate() throws IllegalArgumentException {
         LocalDate today = LocalDate.now();
