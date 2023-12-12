@@ -5,12 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class FlightPair {
-    private Flight outboundFlight;
-    private Flight returnFlight;
+public class Trip {
+    private List<Flight> outboundFlights;
+    private List<Flight> returnFlights;
     private Integer totalPrice;
 }

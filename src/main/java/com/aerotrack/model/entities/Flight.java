@@ -24,7 +24,7 @@ public class Flight {
     private String arrivalDateTime;
     private String flightNumber;
     private String updatedDateTime;
-    private double price;
+    private Double price;
 
     public Flight(String airportFromCode, String airportToCode, String departureDateTime, String arrivalDateTime, String flightNumber, double price) {
         this.direction = airportFromCode + "-" + airportToCode;

@@ -1,6 +1,6 @@
 package com.aerotrack.model.protocol;
 
-import com.aerotrack.model.entities.FlightPair;
+import com.aerotrack.model.entities.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +15,5 @@ import java.util.List;
 @AllArgsConstructor
 public class ScanQueryResponse {
     @NonNull
-    List<FlightPair> flightPairs;
+    List<Trip> trips;
 }
