@@ -8,6 +8,7 @@ import lombok.NonNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -25,13 +26,9 @@ public class ScanQueryRequest {
     private List<String> departureAirports;
     @NonNull
     private List<String> destinationAirports;
-    @NonNull
     private Integer maxChanges;
-    @NonNull
     private Integer minTimeBetweenChangesHours;
-    @NonNull
     private Integer maxTimeBetweenChangesHours;
-    @NonNull
     private Boolean returnToSameAirport;
 
     public ScanQueryRequest(Integer minDays, Integer maxDays, String availabilityStart, String availabilityEnd,
@@ -62,11 +59,11 @@ public class ScanQueryRequest {
         if (maxDays >= 90) throw new IllegalArgumentException("maxDays must be less than 90");
         if (start.isBefore(today)) throw new IllegalArgumentException("availabilityStart must be a future date");
         if (start.isAfter(end)) throw new IllegalArgumentException("availabilityStart must be before availabilityEnd");
-        if (maxDays > end.toEpochDay() - start.toEpochDay()) throw new IllegalArgumentException("maxDays - minDays must be greater than or equal to availabilityEnd - availabilityStart");
+        if (maxDays > end.toEpochDay() - start.toEpochDay()) throw new IllegalArgumentException("Can't stay away a number of days greater than tne availability window.");
         if (end.isAfter(oneYearFromNow)) throw new IllegalArgumentException("availabilityEnd must be within one year from today");
-        if (minTimeBetweenChangesHours < 0) throw new IllegalArgumentException("minTimeBetweenChangesHours must be greater or equal than 0");
-        if (maxTimeBetweenChangesHours > 6) throw new IllegalArgumentException("maxTimeBetweenChangesHours must be less or equal than 6");
-        if (maxChanges > 2) throw new IllegalArgumentException("maxChanges must be less or equal than 2");
+        if (Objects.nonNull(minTimeBetweenChangesHours) && minTimeBetweenChangesHours < 0) throw new IllegalArgumentException("minTimeBetweenChangesHours must be greater or equal than 0");
+        if (Objects.nonNull(maxTimeBetweenChangesHours) && maxTimeBetweenChangesHours > 6) throw new IllegalArgumentException("maxTimeBetweenChangesHours must be less or equal than 6");
+        if (Objects.nonNull(maxChanges) && (maxChanges > 2 || maxChanges < 0)) throw new IllegalArgumentException("maxChanges must be >= 0 and <= 2");
 
     }
 }
