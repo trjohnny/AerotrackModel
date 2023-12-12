@@ -9,13 +9,20 @@ import lombok.ToString;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
+
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.TemporalAccessor;
+
 @DynamoDbBean
 @ToString
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Flight {
@@ -24,6 +31,7 @@ public class Flight {
     private String arrivalDateTime;
     private String flightNumber;
     private String updatedDateTime;
+    private Long TTL;
     private Double price;
 
     public Flight(String airportFromCode, String airportToCode, String departureDateTime, String arrivalDateTime, String flightNumber, double price) {
@@ -34,12 +42,18 @@ public class Flight {
         this.price = price;
 
         LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         this.updatedDateTime = currentDateTime.format(formatter);
+
+
+        try  {
+            LocalDateTime departureLocalDateTime = LocalDateTime.parse(departureDateTime, formatter);
+            this.TTL = departureLocalDateTime.toEpochSecond(java.time.ZoneOffset.UTC);
+        }
+        catch (DateTimeParseException exc) {
+            System.err.println("You provided a wrong datetime format");
+        }
     }
-
-
 
     @DynamoDbSortKey
     public String getDepartureDateTime() { return departureDateTime; }
