@@ -26,16 +26,26 @@ public class ScanQueryRequest {
     @NonNull
     private List<String> destinationAirports;
     @NonNull
+    private Integer maxChanges;
+    @NonNull
+    private Integer minTimeBetweenChangesHours;
+    @NonNull
+    private Integer maxTimeBetweenChangesHours;
+    @NonNull
     private Boolean returnToSameAirport;
 
     public ScanQueryRequest(Integer minDays, Integer maxDays, String availabilityStart, String availabilityEnd,
-                            List<String> departureAirports, List<String> destinationAirports, Boolean returnToSameAirport) {
+                            List<String> departureAirports, List<String> destinationAirports, Integer maxChanges,
+                            Integer minTimeBetweenChangesHours, Integer maxTimeBetweenChangesHours, Boolean returnToSameAirport) {
         this.minDays = minDays;
         this.maxDays = maxDays;
         this.availabilityStart = availabilityStart;
         this.availabilityEnd = availabilityEnd;
         this.departureAirports = departureAirports;
         this.destinationAirports = destinationAirports;
+        this.maxChanges = maxChanges;
+        this.minTimeBetweenChangesHours = minTimeBetweenChangesHours;
+        this.maxTimeBetweenChangesHours = maxTimeBetweenChangesHours;
         this.returnToSameAirport = returnToSameAirport;
 
         validate();
@@ -54,5 +64,9 @@ public class ScanQueryRequest {
         if (start.isAfter(end)) throw new IllegalArgumentException("availabilityStart must be before availabilityEnd");
         if (maxDays > end.toEpochDay() - start.toEpochDay()) throw new IllegalArgumentException("maxDays - minDays must be greater than or equal to availabilityEnd - availabilityStart");
         if (end.isAfter(oneYearFromNow)) throw new IllegalArgumentException("availabilityEnd must be within one year from today");
+        if (minTimeBetweenChangesHours < 0) throw new IllegalArgumentException("minTimeBetweenChangesHours must be greater or equal than 0");
+        if (maxTimeBetweenChangesHours > 6) throw new IllegalArgumentException("maxTimeBetweenChangesHours must be less or equal than 6");
+        if (maxChanges > 2) throw new IllegalArgumentException("maxChanges must be less or equal than 2");
+
     }
 }
