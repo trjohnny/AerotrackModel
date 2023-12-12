@@ -62,7 +62,7 @@ public class ScanQueryRequest {
         if (maxDays > end.toEpochDay() - start.toEpochDay()) throw new IllegalArgumentException("Can't stay away a number of days greater than tne availability window.");
         if (end.isAfter(oneYearFromNow)) throw new IllegalArgumentException("availabilityEnd must be within one year from today");
         if (Objects.nonNull(minTimeBetweenChangesHours) && minTimeBetweenChangesHours < 0) throw new IllegalArgumentException("minTimeBetweenChangesHours must be greater or equal than 0");
-        if (Objects.nonNull(maxTimeBetweenChangesHours) && maxTimeBetweenChangesHours > 6) throw new IllegalArgumentException("maxTimeBetweenChangesHours must be less or equal than 6");
+        if (Objects.nonNull(maxTimeBetweenChangesHours) && maxTimeBetweenChangesHours > 8) throw new IllegalArgumentException("maxTimeBetweenChangesHours must be less or equal than 6");
         if (Objects.nonNull(maxChanges) && (maxChanges > 2 || maxChanges < 0)) throw new IllegalArgumentException("maxChanges must be >= 0 and <= 2");
 
     }
