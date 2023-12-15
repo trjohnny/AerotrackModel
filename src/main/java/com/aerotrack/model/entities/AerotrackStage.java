@@ -10,8 +10,8 @@ import java.util.Arrays;
 public enum AerotrackStage {
     ALPHA("ALPHA", new ApiEndpoint("https://u4ck1qvmfe.execute-api.eu-west-1.amazonaws.com/prod/", "ySPfILwuHkgUiE36bYHH235s9AgFrGg7huBDcXo1")),
     PROD("PROD", new ApiEndpoint("https://bfq0c9l0dl.execute-api.eu-west-1.amazonaws.com/prod/", "uT7NWMVVKt2ysdrCzxjMd7X6Ye64g7C5aI0xAiIc")),
-    DEV_GIOVANNI("gcoro", new ApiEndpoint("https://f1muce19kh.execute-api.eu-west-1.amazonaws.com/prod/", "z9inDLaWtOamHqvOCl25w33KtSbqVpOf61oPHGhK")),
-    DEV_THOMAS("trossime", new ApiEndpoint("https://inqp96fh39.execute-api.eu-west-1.amazonaws.com/prod/", "8y3Q8oI4Rd9GPjICC8NXj4JRNeHQKenm4VAnn6AO"));
+    DEV_GIOVANNI("Giovanni", new ApiEndpoint("https://f1muce19kh.execute-api.eu-west-1.amazonaws.com/prod/", "z9inDLaWtOamHqvOCl25w33KtSbqVpOf61oPHGhK")),
+    DEV_THOMAS("Thomas", new ApiEndpoint("https://inqp96fh39.execute-api.eu-west-1.amazonaws.com/prod/", "8y3Q8oI4Rd9GPjICC8NXj4JRNeHQKenm4VAnn6AO"));
 
     private final String stage;
     private final ApiEndpoint apiEndpoint;
