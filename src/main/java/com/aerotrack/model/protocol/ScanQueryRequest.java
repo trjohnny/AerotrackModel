@@ -54,7 +54,7 @@ public class ScanQueryRequest {
         LocalDate end = LocalDate.parse(availabilityEnd, DateTimeFormatter.ISO_LOCAL_DATE);
         LocalDate oneYearFromNow = today.plusYears(1);
 
-        if (minDays < 0) throw new IllegalArgumentException("minDays must be greater or equal than 0");
+        if (minDays <= 0) throw new IllegalArgumentException("minDays must be greater than 0");
         if (minDays > maxDays) throw new IllegalArgumentException("minDays must not exceed maxDays");
         if (maxDays >= 90) throw new IllegalArgumentException("maxDays must be less than 90");
         if (start.isBefore(today)) throw new IllegalArgumentException("availabilityStart must be a future date");
