@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
@@ -55,6 +56,7 @@ public class ScanQueryRequest {
         LocalDate oneYearFromNow = today.plusYears(1);
 
         if (minDays <= 0) throw new IllegalArgumentException("minDays must be greater than 0");
+        if (Period.between(start, end).toTotalMonths() > 4) throw new IllegalArgumentException("The period between availabilityStart and availabilityEnd must not exceed 4 months.");
         if (minDays > maxDays) throw new IllegalArgumentException("minDays must not exceed maxDays");
         if (maxDays >= 90) throw new IllegalArgumentException("maxDays must be less than 90");
         if (start.isBefore(today)) throw new IllegalArgumentException("availabilityStart must be a future date");
