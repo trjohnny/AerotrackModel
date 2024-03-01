@@ -21,16 +21,16 @@ public class Flight {
     private String direction;
     private String departureDateTime;
     private String arrivalDateTime;
-    private String flightNumber;
+    private String airline;
     private String updatedDateTime;
     private Long TTL;
     private Double price;
 
-    public Flight(String airportFromCode, String airportToCode, String departureDateTime, String arrivalDateTime, String flightNumber, double price) {
+    public Flight(String airportFromCode, String airportToCode, String departureDateTime, String arrivalDateTime, String airline, double price) {
         this.direction = airportFromCode + "-" + airportToCode;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
-        this.flightNumber = flightNumber;
+        this.airline = airline;
         this.price = price;
 
         LocalDateTime currentDateTime = LocalDateTime.now();
