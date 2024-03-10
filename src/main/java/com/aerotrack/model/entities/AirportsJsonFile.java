@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -15,5 +15,5 @@ import java.util.List;
 @EqualsAndHashCode
 @AllArgsConstructor
 public class AirportsJsonFile {
-    private List<Airport> airports;
+    private Set<Airport> airports;
 }
